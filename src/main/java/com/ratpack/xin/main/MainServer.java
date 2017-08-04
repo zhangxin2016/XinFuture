@@ -13,7 +13,7 @@ import java.nio.file.Paths;
 public class MainServer {
     private static FutureConfig futureConfig;
     public static void main(String[] args) {
-        futureConfig = new FutureConfig(Paths.get("config.conf").toFile(),"com.retpack.xin");
+        futureConfig = new FutureConfig(Paths.get("config.conf").toFile(),"com.ratpack.xin");
         log.info("asd");
         System.out.println("hello future");
     }

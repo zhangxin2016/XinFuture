@@ -29,12 +29,12 @@ import java.util.Set;
 public class FutureConfig {
     @Inject
     @TypesafeConfig("mysqlConfigList")
-    private List<MysqlConfig> mysqlConfigList;
+    private List<MysqlConfig> mysqlConfigList1;
 
     @Inject
-    @NotNull
+    //@NotNull
     @TypesafeConfig("server.port")
-    private Integer serverPort;
+    private Integer serverPort1;
 
 
     private final Config config;
