@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<configuration xmlns="http://www.jooq.org/xsd/jooq-codegen-3.9.2.xsd">
+    <!-- 配置文件链接jooq -->
+    <!--新建文件夹：下面包含包以及配置文件-->
+    <!--命令行：java -classpath jooq-3.9.5.jar; jooq-meta-3.9.5.jar; jooq-codegen-3.9.5.jar; mysql-connector-java-5.1.38.jar;.org.jooq.util.GenerationTool jooq-config.xml-->
+    <!--mysql不建议用最新版，诸多问题暂未解决-->
+    <jdbc>
+        <driver>com.mysql.jdbc.Driver</driver>
+        <url>jdbc:mysql://localhost:3306/ratpack</url>
+        <user>root</user>
+        <password>123456</password>
+    </jdbc>
+
+    <generator>
+        <name>org.jooq.util.JavaGenerator</name>
+        <database>
+            <name>org.jooq.util.mysql.MySQLDatabase</name>
+            <inputSchema>ratpack</inputSchema>
+            <includes>.*</includes>
+            <excludes></excludes>
+        </database>
+
+        <target>
+            <packageName>com.ratpack.xin.db</packageName>
+            <directory>C:/work/zhangx/home/XinFuture/src/main/java</directory>
+        </target>
+    </generator>
+</configuration>
