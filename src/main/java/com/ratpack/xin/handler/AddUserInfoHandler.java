@@ -33,6 +33,7 @@ public class AddUserInfoHandler implements Handler {
                log.error("userInfo jsonToObject error:{}",e.getMessage());
             }
 
+
         });
 
     }
