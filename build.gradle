@@ -58,6 +58,8 @@ dependencies {
     compile group: 'org.jooq', name: 'jooq', version: '3.9.5'/*
     compile group: 'org.jooq', name: 'jooq-meta', version: '3.9.5'
     compile group: 'org.jooq', name: 'jooq-codegen', version: '3.9.5'*/
+    compile group: 'com.github.witoldsz', name: 'ultm', version: '2.1'
+
 
 }
 

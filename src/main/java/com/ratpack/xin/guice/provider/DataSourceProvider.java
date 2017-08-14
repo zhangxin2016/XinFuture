@@ -19,13 +19,13 @@ public class DataSourceProvider implements Provider<DataSource> {
     @Override
     public DataSource get() {
         HikariConfig hikariConfig = new HikariConfig();
-        hikariConfig.setDataSourceClassName(mysqlConfig.getDatabase());
+        hikariConfig.setDataSourceClassName(mysqlConfig.getDataSourceClassName());
+        hikariConfig.setJdbcUrl(mysqlConfig.getUrl());
         hikariConfig.setUsername(mysqlConfig.getUsername());
         hikariConfig.setPassword(mysqlConfig.getPassword());
-        hikariConfig.addDataSourceProperty("databaseName",mysqlConfig.getTable());
-        hikariConfig.addDataSourceProperty("serverName",mysqlConfig.getHost());
-        hikariConfig.addDataSourceProperty("portNumber",mysqlConfig.getPort());
+        hikariConfig.addDataSourceProperty("databaseName",mysqlConfig.getDatabase());
         HikariDataSource hikariDataSource = new HikariDataSource(hikariConfig);
         return hikariDataSource;
     }
+
 }
