@@ -1,5 +1,6 @@
 package com.ratpack.xin.guice.provider;
 
+import com.github.racc.tscg.TypesafeConfig;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.ratpack.xin.config.MysqlConfig;
@@ -15,16 +16,21 @@ import javax.sql.DataSource;
 @Log4j2
 public class DataSourceProvider implements Provider<DataSource> {
     @Inject
+    @TypesafeConfig("dbConfig")
     private MysqlConfig mysqlConfig;
     @Override
     public DataSource get() {
         HikariConfig hikariConfig = new HikariConfig();
-        hikariConfig.setDataSourceClassName(mysqlConfig.getDataSourceClassName());
+        //hikariConfig.setDataSourceClassName(mysqlConfig.getDataSourceClassName());
         hikariConfig.setJdbcUrl(mysqlConfig.getUrl());
-        hikariConfig.setUsername(mysqlConfig.getUsername());
-        hikariConfig.setPassword(mysqlConfig.getPassword());
-        hikariConfig.addDataSourceProperty("databaseName",mysqlConfig.getDatabase());
+        //hikariConfig.setUsername(mysqlConfig.getUsername());
+        //hikariConfig.setPassword(mysqlConfig.getPassword());
+        //hikariConfig.addDataSourceProperty("databaseName",mysqlConfig.getDatabase());
+        hikariConfig.addDataSourceProperty("cachePrepStmts", "true");
+        hikariConfig.addDataSourceProperty("prepStmtCacheSize", "250");
+        hikariConfig.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
         HikariDataSource hikariDataSource = new HikariDataSource(hikariConfig);
+        log.info("mysql start OK!");
         return hikariDataSource;
     }
 

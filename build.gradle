@@ -55,7 +55,8 @@ dependencies {
     compile group: 'io.reactivex', name: 'rxjava', version: '1.3.0'
     compile group: 'com.zaxxer', name: 'HikariCP', version: '2.6.3'
     //jooq
-    compile group: 'org.jooq', name: 'jooq', version: '3.9.5'/*
+    compile group: 'org.jooq', name: 'jooq', version: '3.9.5'
+    /*
     compile group: 'org.jooq', name: 'jooq-meta', version: '3.9.5'
     compile group: 'org.jooq', name: 'jooq-codegen', version: '3.9.5'*/
     compile group: 'com.github.witoldsz', name: 'ultm', version: '2.1'

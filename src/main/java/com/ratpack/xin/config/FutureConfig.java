@@ -28,8 +28,8 @@ import java.util.Set;
 @Log4j2
 public class FutureConfig {
     @Inject
-    @TypesafeConfig("mysqlConfigList")
-    private List<MysqlConfig> mysqlConfigList;
+    @TypesafeConfig("dbConfig")
+    private MysqlConfig mysqlConfig;
 
     @Inject
     //@NotNull

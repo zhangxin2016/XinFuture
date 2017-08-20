@@ -11,16 +11,16 @@ import javax.validation.constraints.NotNull;
  * mysql配置
  */
 @Data
-@JsonIgnoreProperties(ignoreUnknown = true) //这个注释：不进行json的转化防止一些Json转换异常错误
+//@JsonIgnoreProperties(ignoreUnknown = true) //这个注释：不进行json的转化防止一些Json转换异常错误
 public class MysqlConfig {
 
-    private String dataSourceClassName;
+    //private String dataSourceClassName;
 
     private String url;
 
-    private String username;
+    //private String username;
 
-    private String password;
+    //private String password;
 
-    private String database;
+    //private String database;
 }

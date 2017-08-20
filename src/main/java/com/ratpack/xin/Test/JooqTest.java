@@ -1,8 +1,11 @@
 package com.ratpack.xin.Test;
 
 import com.google.inject.Inject;
+import com.ratpack.xin.config.FutureConfig;
 import com.ratpack.xin.db.tables.pojos.Userinfo;
+import com.ratpack.xin.guice.FutureModule;
 import com.ratpack.xin.guice.provider.DataSourceProvider;
+import com.ratpack.xin.main.MainServer;
 import lombok.extern.log4j.Log4j2;
 import org.jooq.*;
 import org.jooq.conf.Settings;
@@ -15,9 +18,13 @@ import org.jooq.tools.jdbc.MockCallable;
 import org.jooq.tools.jdbc.MockDataProvider;
 import org.jooq.tools.jdbc.MockRunnable;
 import org.jooq.util.xml.jaxb.InformationSchema;
+import ratpack.guice.Guice;
+import ratpack.registry.Registry;
+import ratpack.server.ServerConfigBuilder;
 
 
 import java.math.BigInteger;
+import java.nio.file.Paths;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Collection;
@@ -46,7 +53,4 @@ public class JooqTest {
         return userinfo;
     }
 
-    public static void main(String[] args) {
-        selectAll("1");
-    }
 }

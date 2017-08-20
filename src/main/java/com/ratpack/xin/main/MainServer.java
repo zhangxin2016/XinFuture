@@ -20,10 +20,14 @@ import java.nio.file.Paths;
 @Log4j2
 public class MainServer {
     private static FutureConfig futureConfig;
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         futureConfig = new FutureConfig(Paths.get("config.conf").toFile(),"com.ratpack.xin");
         log.info("asd");
-
+        RatpackServer.start(rss->{
+            rss.serverConfig(MainServer::initConfig)
+                    .registry(MainServer.registryFunction())
+                    .handlers(MainServer::router);
+        });
     }
     public static ServerConfigBuilder initConfig(ServerConfigBuilder serverConfigBuilder){
         return serverConfigBuilder.port(futureConfig.getServerPort()).baseDir(Paths.get(futureConfig.getStaticFilePath()));
@@ -44,6 +48,7 @@ public class MainServer {
                     context.next();
         }).get(context->{
             context.render("This is XinFuture project");
-        }).prefix("userInfo",UserInfoRouter.class);
+        }).prefix("userInfo",UserInfoRouter.class)
+          .files();
     }
 }

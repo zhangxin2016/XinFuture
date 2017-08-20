@@ -25,12 +25,12 @@ public class FutureModule extends AbstractModule {
     protected void configure() {
 
         //路由
-        bind(UserInfoRouter.class);
+        bind(UserInfoRouter.class).in(Singleton.class);
         //handler -> userInfo
-        bind(Handler.class).annotatedWith(Names.named("getUserHandler")).to(GetUserHandler.class);
-        bind(Handler.class).annotatedWith(Names.named("addUserInfoHandler")).to(AddUserInfoHandler.class);
-        bind(Handler.class).annotatedWith(Names.named("updateUserInfoHandler")).to(UpdateUserInfoHandler.class);
-        bind(Handler.class).annotatedWith(Names.named("deleteUserInfoHandler")).to(DeleteUserInfoHandler.class);
+        bind(Handler.class).annotatedWith(Names.named("getUserHandler")).to(GetUserHandler.class).in(Singleton.class);
+        bind(Handler.class).annotatedWith(Names.named("addUserInfoHandler")).to(AddUserInfoHandler.class).in(Singleton.class);
+        bind(Handler.class).annotatedWith(Names.named("updateUserInfoHandler")).to(UpdateUserInfoHandler.class).in(Singleton.class);
+        bind(Handler.class).annotatedWith(Names.named("deleteUserInfoHandler")).to(DeleteUserInfoHandler.class).in(Singleton.class);
 
         //jooq
         bind(DataSource.class).toProvider(DataSourceProvider.class).in(Singleton.class);
