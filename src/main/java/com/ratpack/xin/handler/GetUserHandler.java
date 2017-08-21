@@ -23,27 +23,18 @@ import static ratpack.jackson.Jackson.json;
 public class GetUserHandler implements Handler {
     @Inject
     private static DSLContext dslContext;
-
     @Inject
     public GetUserHandler(DSLContext dslContext) {
         this.dslContext = dslContext;
     }
-    @Inject
-    private dbTest dbTest;
     @Override
     public void handle(Context ctx) throws Exception {
-        //System.out.println("qwe");
-        //String id = ctx.getRequest().getQueryParams().get("id");
-        //List<InfoCommon.UserInfo.Builder> result = dbTest.list();
-        //System.out.println("result:=="+result);
-        //String id = "1";
         Table<Record> table = DSL.table("userinfo");//表名
         Result<Record> fetch = dslContext.select().from(table).where("userid = 1").fetch();
         for (Object aResult : fetch) {
             Record record = (Record) aResult;
-            System.out.println(record);
+            System.out.println(record.get(""));
         }
-        //log.debug("dal getUserfirestwelfare id:{} {}",id,USERINFO);
         ctx.render("zhang");
     }
 }

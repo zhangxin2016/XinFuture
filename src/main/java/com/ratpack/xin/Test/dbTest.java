@@ -53,4 +53,12 @@ public class dbTest {
             return null;
         }
     }
+
+    public static void main(String[] args) {
+        //System.out.println("qwe");
+        //String id = ctx.getRequest().getQueryParams().get("id");
+        //List<InfoCommon.UserInfo.Builder> result = dbTest.list();
+        //System.out.println("result:=="+result);
+        //String id = "1";
+    }
 }
