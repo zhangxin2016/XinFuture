@@ -57,6 +57,7 @@ public class GetUserHandler implements Handler {
             ctx.render(json(JsonTool.createObjectNode().put("status",1).set("result",JsonTool.readJsonNodeValue(userInfoBuilderList))));
         }catch (Exception e){
             log.error("错误:{}",e);
+            ctx.getResponse().getHeaders().add("content-type","application/json;charset=UTF-8");
             ctx.render(json(JsonTool.createObjectNode().put("result","获取列表异常").put("status",-1)));
         }
 
