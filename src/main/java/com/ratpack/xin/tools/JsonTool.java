@@ -33,6 +33,23 @@ public class JsonTool {
         }
     }
 
+    public final static JsonNode readJsonNodeValue(Object object) {
+        try {
+            String string = objectMapper.writeValueAsString(object);
+            return   objectMapper.readTree(string);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            return null;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public final static ObjectNode createObjectNode(){
+        return objectMapper.createObjectNode();
+    }
+
     public final static ObjectNode strToObjectNode(String str){
         JsonNode jsonNode = strToJsonNode(str);
         if(jsonNode==null){
