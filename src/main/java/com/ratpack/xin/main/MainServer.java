@@ -3,8 +3,8 @@ package com.ratpack.xin.main;
 import com.ratpack.xin.config.FutureConfig;
 import com.ratpack.xin.guice.FutureModule;
 import com.ratpack.xin.renders.ResultRender;
+import com.ratpack.xin.router.UeditorRouter;
 import com.ratpack.xin.router.UserInfoRouter;
-import com.sun.net.httpserver.Filter;
 import lombok.extern.log4j.Log4j2;
 import ratpack.guice.Guice;
 import ratpack.handling.Chain;
@@ -49,6 +49,7 @@ public class MainServer {
         }).get(context->{
             context.render("This is XinFuture project");
         }).prefix("userInfo",UserInfoRouter.class)
+          .prefix("ueditor",UeditorRouter.class)
           .files();
     }
 }
