@@ -4,11 +4,14 @@
 package com.ratpack.xin.db;
 
 
+import com.ratpack.xin.db.tables.Article;
 import com.ratpack.xin.db.tables.Userinfo;
+import com.ratpack.xin.db.tables.records.ArticleRecord;
 import com.ratpack.xin.db.tables.records.UserinfoRecord;
 
 import javax.annotation.Generated;
 
+import org.jooq.Identity;
 import org.jooq.UniqueKey;
 import org.jooq.impl.AbstractKeys;
 
@@ -31,11 +34,13 @@ public class Keys {
     // IDENTITY definitions
     // -------------------------------------------------------------------------
 
+    public static final Identity<ArticleRecord, Long> IDENTITY_ARTICLE = Identities0.IDENTITY_ARTICLE;
 
     // -------------------------------------------------------------------------
     // UNIQUE and PRIMARY KEY definitions
     // -------------------------------------------------------------------------
 
+    public static final UniqueKey<ArticleRecord> KEY_ARTICLE_PRIMARY = UniqueKeys0.KEY_ARTICLE_PRIMARY;
     public static final UniqueKey<UserinfoRecord> KEY_USERINFO_PRIMARY = UniqueKeys0.KEY_USERINFO_PRIMARY;
 
     // -------------------------------------------------------------------------
@@ -47,7 +52,12 @@ public class Keys {
     // [#1459] distribute members to avoid static initialisers > 64kb
     // -------------------------------------------------------------------------
 
+    private static class Identities0 extends AbstractKeys {
+        public static Identity<ArticleRecord, Long> IDENTITY_ARTICLE = createIdentity(Article.ARTICLE, Article.ARTICLE.ID);
+    }
+
     private static class UniqueKeys0 extends AbstractKeys {
+        public static final UniqueKey<ArticleRecord> KEY_ARTICLE_PRIMARY = createUniqueKey(Article.ARTICLE, "KEY_article_PRIMARY", Article.ARTICLE.ID);
         public static final UniqueKey<UserinfoRecord> KEY_USERINFO_PRIMARY = createUniqueKey(Userinfo.USERINFO, "KEY_userinfo_PRIMARY", Userinfo.USERINFO.USERID);
     }
 }

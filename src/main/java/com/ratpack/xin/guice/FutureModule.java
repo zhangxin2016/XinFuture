@@ -6,10 +6,8 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Singleton;
 import com.google.inject.name.Names;
 import com.ratpack.xin.guice.provider.*;
-import com.ratpack.xin.handler.AddUserInfoHandler;
-import com.ratpack.xin.handler.DeleteUserInfoHandler;
-import com.ratpack.xin.handler.GetUserHandler;
-import com.ratpack.xin.handler.UpdateUserInfoHandler;
+import com.ratpack.xin.handler.*;
+import com.ratpack.xin.router.ArticleRouter;
 import com.ratpack.xin.router.UserInfoRouter;
 import org.jooq.DSLContext;
 import ratpack.handling.Handler;
@@ -26,11 +24,14 @@ public class FutureModule extends AbstractModule {
 
         //路由
         bind(UserInfoRouter.class).in(Singleton.class);
+        bind(ArticleRouter.class).in(Singleton.class);
         //handler -> userInfo
         bind(Handler.class).annotatedWith(Names.named("getUserHandler")).to(GetUserHandler.class).in(Singleton.class);
         bind(Handler.class).annotatedWith(Names.named("addUserInfoHandler")).to(AddUserInfoHandler.class).in(Singleton.class);
         bind(Handler.class).annotatedWith(Names.named("updateUserInfoHandler")).to(UpdateUserInfoHandler.class).in(Singleton.class);
         bind(Handler.class).annotatedWith(Names.named("deleteUserInfoHandler")).to(DeleteUserInfoHandler.class).in(Singleton.class);
+        //handler -> 博客
+        bind(Handler.class).annotatedWith(Names.named("articleAddHandler")).to(ArticleAddHandler.class).in(Singleton.class);
 
         //jooq
         bind(DataSource.class).toProvider(DataSourceProvider.class).in(Singleton.class);

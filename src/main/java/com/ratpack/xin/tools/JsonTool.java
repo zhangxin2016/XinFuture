@@ -32,6 +32,9 @@ public class JsonTool {
             throw new RuntimeException(e);
         }
     }
+    public final static <T> T convertValue(JsonNode jsonNode, Class<T> valueType){
+        return objectMapper.convertValue(jsonNode, valueType);
+    }
 
     public final static JsonNode readJsonNodeValue(Object object) {
         try {

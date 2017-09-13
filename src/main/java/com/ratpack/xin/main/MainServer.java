@@ -3,7 +3,7 @@ package com.ratpack.xin.main;
 import com.ratpack.xin.config.FutureConfig;
 import com.ratpack.xin.guice.FutureModule;
 import com.ratpack.xin.renders.ResultRender;
-import com.ratpack.xin.router.UeditorRouter;
+import com.ratpack.xin.router.ArticleRouter;
 import com.ratpack.xin.router.UserInfoRouter;
 import lombok.extern.log4j.Log4j2;
 import ratpack.guice.Guice;
@@ -22,7 +22,6 @@ public class MainServer {
     private static FutureConfig futureConfig;
     public static void main(String[] args) throws Exception {
         futureConfig = new FutureConfig(Paths.get("config.conf").toFile(),"com.ratpack.xin");
-        log.info("asd");
         RatpackServer.start(rss->{
             rss.serverConfig(MainServer::initConfig)
                     .registry(MainServer.registryFunction())
@@ -49,7 +48,7 @@ public class MainServer {
         }).get(context->{
             context.render("This is XinFuture project");
         }).prefix("userInfo",UserInfoRouter.class)
-          .prefix("ueditor",UeditorRouter.class)
+          .prefix("article",ArticleRouter.class)
           .files();
     }
 }

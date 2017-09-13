@@ -1,18 +1,14 @@
 package com.ratpack.xin.handler;
 
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.google.inject.Inject;
 import com.ratpack.xin.db.tables.pojos.Userinfo;
-import com.ratpack.xin.pojo.InfoCommon;
 import com.ratpack.xin.tools.JsonTool;
 import lombok.extern.log4j.Log4j2;
 import org.jooq.*;
-import org.jooq.impl.DSL;
 import ratpack.handling.Context;
 import ratpack.handling.Handler;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static com.ratpack.xin.db.tables.Userinfo.USERINFO;

@@ -54,7 +54,7 @@
         <logger name="io" level="WARN"></logger>
         <logger name="com" level="WARN"></logger>
         <logger name="kafka" level="WARN"></logger>
-        <logger name="com.tvm" level="DEBUG"></logger>
+        <logger name="com.ratpack" level="DEBUG"></logger>
         <Root level="debug">
             <AppenderRef ref="Console"/>
             <appender-ref ref="RollingFileInfo"/>
