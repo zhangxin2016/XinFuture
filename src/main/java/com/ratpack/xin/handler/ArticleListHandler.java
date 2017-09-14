@@ -20,7 +20,8 @@ public class ArticleListHandler implements Handler{
     private IArticleDao iArticleDao;
     @Override
     public void handle(Context ctx) throws Exception {
-        List<Article> articleList = iArticleDao.listArticle();
+        String user = ctx.getRequest().getQueryParams().get("username");
+        List<Article> articleList = iArticleDao.listArticle(user);
         log.debug("ArticleListHandler articleList:{}",articleList);
         ctx.render(ResultVo.success(articleList));
     }
