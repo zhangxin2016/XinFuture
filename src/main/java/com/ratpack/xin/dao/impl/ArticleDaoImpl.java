@@ -7,6 +7,8 @@ import com.ratpack.xin.guice.provider.TxJooq;
 import lombok.extern.log4j.Log4j2;
 import org.jooq.DSLContext;
 
+import java.util.List;
+
 import static com.ratpack.xin.db.tables.Article.ARTICLE;
 
 /**
@@ -32,5 +34,14 @@ public class ArticleDaoImpl implements IArticleDao {
                 .set(ARTICLE.BLOGCONTENT, article.getBlogcontent())
                 .execute();
         return result;
+    }
+
+    @Override
+    public List<Article> listArticle() {
+        List<Article> articleList = dslContext.selectFrom(ARTICLE).fetch().map(record -> {
+            Article article = record.into(Article.class);
+            return article;
+        });
+        return articleList;
     }
 }

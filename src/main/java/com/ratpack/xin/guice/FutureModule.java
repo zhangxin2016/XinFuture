@@ -34,6 +34,7 @@ public class FutureModule extends AbstractModule {
         bind(Handler.class).annotatedWith(Names.named("deleteUserInfoHandler")).to(DeleteUserInfoHandler.class).in(Singleton.class);
         //handler -> 博客
         bind(Handler.class).annotatedWith(Names.named("articleAddHandler")).to(ArticleAddHandler.class).in(Singleton.class);
+        bind(Handler.class).annotatedWith(Names.named("articleListHandler")).to(ArticleListHandler.class).in(Singleton.class);
 
         //jooq
         bind(DataSource.class).toProvider(DataSourceProvider.class).in(Singleton.class);

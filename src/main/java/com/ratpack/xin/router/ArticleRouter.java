@@ -14,9 +14,13 @@ public class ArticleRouter implements Action<Chain> {
     @Inject
     @Named("articleAddHandler")
     private Handler articleAddHandler;
+    @Inject
+    @Named("articleListHandler")
+    private Handler articleListHandler;
     @Override
     public void execute(Chain chain) throws Exception {
         chain.post("insert",articleAddHandler);
+        chain.get("list",articleListHandler);
 
     }
 }

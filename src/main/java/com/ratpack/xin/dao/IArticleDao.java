@@ -6,6 +6,8 @@ import lombok.extern.log4j.Log4j2;
 import org.jooq.DSLContext;
 
 import static com.ratpack.xin.db.tables.Article.ARTICLE;
+
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -13,4 +15,5 @@ import java.util.UUID;
  */
 public interface IArticleDao {
     Integer insertArticle(Article article);
+    List<Article> listArticle();
 }
