@@ -1,0 +1,36 @@
+package com.ratpack.xin.dao.impl;
+
+import com.google.inject.Inject;
+import com.ratpack.xin.dao.IArticleDao;
+import com.ratpack.xin.db.tables.pojos.Article;
+import com.ratpack.xin.guice.provider.TxJooq;
+import lombok.extern.log4j.Log4j2;
+import org.jooq.DSLContext;
+
+import static com.ratpack.xin.db.tables.Article.ARTICLE;
+
+/**
+ * Created by zhangx on 2017/9/14
+ */
+@Log4j2
+public class ArticleDaoImpl implements IArticleDao {
+    @Inject
+    private static DSLContext dslContext;
+    @Inject
+    public ArticleDaoImpl(DSLContext dslContext) {
+        this.dslContext = dslContext;
+    }
+    @Override
+    public Integer insertArticle(Article article) {
+        int result = dslContext.insertInto(ARTICLE)
+                .set(ARTICLE.CREATE_UUID, article.getCreateUuid())
+                .set(ARTICLE.BLOGAUTHOR, article.getBlogauthor())
+                .set(ARTICLE.BLOGTYPE, article.getBlogtype())
+                .set(ARTICLE.BLOGTITIE, article.getBlogtitie())
+                .set(ARTICLE.BLOGKEYWORDS, article.getBlogkeywords())
+                .set(ARTICLE.BLOGABSTRACT, article.getBlogabstract())
+                .set(ARTICLE.BLOGCONTENT, article.getBlogcontent())
+                .execute();
+        return result;
+    }
+}

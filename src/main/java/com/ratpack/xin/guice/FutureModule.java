@@ -5,6 +5,8 @@ import com.github.witoldsz.ultm.ULTM;
 import com.google.inject.AbstractModule;
 import com.google.inject.Singleton;
 import com.google.inject.name.Names;
+import com.ratpack.xin.dao.IArticleDao;
+import com.ratpack.xin.dao.impl.ArticleDaoImpl;
 import com.ratpack.xin.guice.provider.*;
 import com.ratpack.xin.handler.*;
 import com.ratpack.xin.router.ArticleRouter;
@@ -39,5 +41,8 @@ public class FutureModule extends AbstractModule {
         bind(DSLContext.class).annotatedWith(TxJooq.class).toProvider(TxJooqProvider.class).in(Singleton.class);
         bind(ULTM.class).toProvider(ULTMProvider.class).in(Singleton.class);
         bind(TxManager.class).toProvider(TxManagerProvider.class).in(Singleton.class);
+
+        //DAO
+        bind(IArticleDao.class).to(ArticleDaoImpl.class).in(Singleton.class);
     }
 }
