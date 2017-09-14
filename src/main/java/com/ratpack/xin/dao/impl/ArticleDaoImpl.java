@@ -37,8 +37,17 @@ public class ArticleDaoImpl implements IArticleDao {
     }
 
     @Override
-    public List<Article> listArticle(String user) {
+    public List<Article> listArticleByUser(String user) {
         List<Article> articleList = dslContext.selectFrom(ARTICLE).where(ARTICLE.BLOGAUTHOR.eq(user)).fetch().map(record -> {
+            Article article = record.into(Article.class);
+            return article;
+        });
+        return articleList;
+    }
+
+    @Override
+    public List<Article> listArticleAll() {
+        List<Article> articleList = dslContext.selectFrom(ARTICLE).fetch().map(record -> {
             Article article = record.into(Article.class);
             return article;
         });

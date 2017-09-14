@@ -8,6 +8,7 @@ import lombok.extern.log4j.Log4j2;
 import ratpack.handling.Context;
 import ratpack.handling.Handler;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,7 +22,12 @@ public class ArticleListHandler implements Handler{
     @Override
     public void handle(Context ctx) throws Exception {
         String user = ctx.getRequest().getQueryParams().get("username");
-        List<Article> articleList = iArticleDao.listArticle(user);
+        List<Article> articleList = new ArrayList<>();
+        if (user.equals("admin")){
+            articleList = iArticleDao.listArticleAll();
+        }else {
+            articleList = iArticleDao.listArticleByUser(user);
+        }
         log.debug("ArticleListHandler articleList:{}",articleList);
         ctx.render(ResultVo.success(articleList));
     }

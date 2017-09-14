@@ -15,5 +15,6 @@ import java.util.UUID;
  */
 public interface IArticleDao {
     Integer insertArticle(Article article);
-    List<Article> listArticle(String user);
+    List<Article> listArticleByUser(String user);
+    List<Article> listArticleAll();
 }
