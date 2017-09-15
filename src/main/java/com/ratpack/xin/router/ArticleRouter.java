@@ -17,10 +17,14 @@ public class ArticleRouter implements Action<Chain> {
     @Inject
     @Named("articleListHandler")
     private Handler articleListHandler;
+    @Inject
+    @Named("articleByUuidHandler")
+    private Handler articleByUuidHandler;
     @Override
     public void execute(Chain chain) throws Exception {
         chain.post("insert",articleAddHandler);
         chain.get("list",articleListHandler);
+        chain.get("get",articleByUuidHandler);
 
     }
 }

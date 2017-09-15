@@ -53,4 +53,13 @@ public class ArticleDaoImpl implements IArticleDao {
         });
         return articleList;
     }
+
+    @Override
+    public Article articleInfo(String uuid) {
+        Article article = dslContext.selectFrom(ARTICLE).where(ARTICLE.CREATE_UUID.equal(uuid)).fetchOne().map(record -> {
+            Article article1 = record.into(Article.class);
+            return article1;
+        });
+        return article;
+    }
 }
