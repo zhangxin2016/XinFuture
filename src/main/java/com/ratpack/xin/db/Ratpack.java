@@ -5,6 +5,7 @@ package com.ratpack.xin.db;
 
 
 import com.ratpack.xin.db.tables.Article;
+import com.ratpack.xin.db.tables.Articletype;
 import com.ratpack.xin.db.tables.Userinfo;
 
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ import org.jooq.impl.SchemaImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Ratpack extends SchemaImpl {
 
-    private static final long serialVersionUID = -483413640;
+    private static final long serialVersionUID = 693477735;
 
     /**
      * The reference instance of <code>ratpack</code>
@@ -42,6 +43,11 @@ public class Ratpack extends SchemaImpl {
      * The table <code>ratpack.article</code>.
      */
     public final Article ARTICLE = com.ratpack.xin.db.tables.Article.ARTICLE;
+
+    /**
+     * The table <code>ratpack.articletype</code>.
+     */
+    public final Articletype ARTICLETYPE = com.ratpack.xin.db.tables.Articletype.ARTICLETYPE;
 
     /**
      * The table <code>ratpack.userinfo</code>.
@@ -74,6 +80,7 @@ public class Ratpack extends SchemaImpl {
     private final List<Table<?>> getTables0() {
         return Arrays.<Table<?>>asList(
             Article.ARTICLE,
+            Articletype.ARTICLETYPE,
             Userinfo.USERINFO);
     }
 }

@@ -62,4 +62,10 @@ public class ArticleDaoImpl implements IArticleDao {
         });
         return article;
     }
+
+    @Override
+    public Integer countByType(String typeUUID) {
+        Integer count = dslContext.fetchCount(dslContext.selectFrom(ARTICLE).where(ARTICLE.BLOGTYPE.eq(typeUUID)));
+        return count;
+    }
 }

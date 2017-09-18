@@ -5,8 +5,10 @@ package com.ratpack.xin.db;
 
 
 import com.ratpack.xin.db.tables.Article;
+import com.ratpack.xin.db.tables.Articletype;
 import com.ratpack.xin.db.tables.Userinfo;
 import com.ratpack.xin.db.tables.records.ArticleRecord;
+import com.ratpack.xin.db.tables.records.ArticletypeRecord;
 import com.ratpack.xin.db.tables.records.UserinfoRecord;
 
 import javax.annotation.Generated;
@@ -35,12 +37,14 @@ public class Keys {
     // -------------------------------------------------------------------------
 
     public static final Identity<ArticleRecord, Long> IDENTITY_ARTICLE = Identities0.IDENTITY_ARTICLE;
+    public static final Identity<ArticletypeRecord, Integer> IDENTITY_ARTICLETYPE = Identities0.IDENTITY_ARTICLETYPE;
 
     // -------------------------------------------------------------------------
     // UNIQUE and PRIMARY KEY definitions
     // -------------------------------------------------------------------------
 
     public static final UniqueKey<ArticleRecord> KEY_ARTICLE_PRIMARY = UniqueKeys0.KEY_ARTICLE_PRIMARY;
+    public static final UniqueKey<ArticletypeRecord> KEY_ARTICLETYPE_PRIMARY = UniqueKeys0.KEY_ARTICLETYPE_PRIMARY;
     public static final UniqueKey<UserinfoRecord> KEY_USERINFO_PRIMARY = UniqueKeys0.KEY_USERINFO_PRIMARY;
 
     // -------------------------------------------------------------------------
@@ -54,10 +58,12 @@ public class Keys {
 
     private static class Identities0 extends AbstractKeys {
         public static Identity<ArticleRecord, Long> IDENTITY_ARTICLE = createIdentity(Article.ARTICLE, Article.ARTICLE.ID);
+        public static Identity<ArticletypeRecord, Integer> IDENTITY_ARTICLETYPE = createIdentity(Articletype.ARTICLETYPE, Articletype.ARTICLETYPE.ID);
     }
 
     private static class UniqueKeys0 extends AbstractKeys {
         public static final UniqueKey<ArticleRecord> KEY_ARTICLE_PRIMARY = createUniqueKey(Article.ARTICLE, "KEY_article_PRIMARY", Article.ARTICLE.ID);
+        public static final UniqueKey<ArticletypeRecord> KEY_ARTICLETYPE_PRIMARY = createUniqueKey(Articletype.ARTICLETYPE, "KEY_articletype_PRIMARY", Articletype.ARTICLETYPE.ID);
         public static final UniqueKey<UserinfoRecord> KEY_USERINFO_PRIMARY = createUniqueKey(Userinfo.USERINFO, "KEY_userinfo_PRIMARY", Userinfo.USERINFO.USERID);
     }
 }

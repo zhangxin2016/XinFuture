@@ -18,4 +18,5 @@ public interface IArticleDao {
     List<Article> listArticleByUser(String user);
     List<Article> listArticleAll();
     Article articleInfo(String uuid);
+    Integer countByType(String typeUUID);
 }

@@ -36,7 +36,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Article extends TableImpl<ArticleRecord> {
 
-    private static final long serialVersionUID = 1153765518;
+    private static final long serialVersionUID = -282956160;
 
     /**
      * The reference instance of <code>ratpack.article</code>
@@ -59,7 +59,7 @@ public class Article extends TableImpl<ArticleRecord> {
     /**
      * The column <code>ratpack.article.create_uuid</code>. 创建者唯一标记
      */
-    public final TableField<ArticleRecord, String> CREATE_UUID = createField("create_uuid", org.jooq.impl.SQLDataType.VARCHAR.length(22), this, "创建者唯一标记");
+    public final TableField<ArticleRecord, String> CREATE_UUID = createField("create_uuid", org.jooq.impl.SQLDataType.VARCHAR.length(50), this, "创建者唯一标记");
 
     /**
      * The column <code>ratpack.article.create_time</code>. 创建时间
@@ -74,7 +74,7 @@ public class Article extends TableImpl<ArticleRecord> {
     /**
      * The column <code>ratpack.article.blogtype</code>. 类型
      */
-    public final TableField<ArticleRecord, String> BLOGTYPE = createField("blogtype", org.jooq.impl.SQLDataType.VARCHAR.length(22), this, "类型");
+    public final TableField<ArticleRecord, String> BLOGTYPE = createField("blogtype", org.jooq.impl.SQLDataType.VARCHAR.length(50), this, "类型");
 
     /**
      * The column <code>ratpack.article.blogtitie</code>. 文章标题
@@ -89,12 +89,12 @@ public class Article extends TableImpl<ArticleRecord> {
     /**
      * The column <code>ratpack.article.blogabstract</code>. 文章摘要
      */
-    public final TableField<ArticleRecord, String> BLOGABSTRACT = createField("blogabstract", org.jooq.impl.SQLDataType.VARCHAR.length(200), this, "文章摘要");
+    public final TableField<ArticleRecord, String> BLOGABSTRACT = createField("blogabstract", org.jooq.impl.SQLDataType.CLOB, this, "文章摘要");
 
     /**
      * The column <code>ratpack.article.blogcontent</code>. 文章内容
      */
-    public final TableField<ArticleRecord, String> BLOGCONTENT = createField("blogcontent", org.jooq.impl.SQLDataType.VARCHAR.length(20000), this, "文章内容");
+    public final TableField<ArticleRecord, String> BLOGCONTENT = createField("blogcontent", org.jooq.impl.SQLDataType.CLOB, this, "文章内容");
 
     /**
      * Create a <code>ratpack.article</code> table reference

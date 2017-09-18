@@ -4,6 +4,7 @@ import com.ratpack.xin.config.FutureConfig;
 import com.ratpack.xin.guice.FutureModule;
 import com.ratpack.xin.renders.ResultRender;
 import com.ratpack.xin.router.ArticleRouter;
+import com.ratpack.xin.router.ArticleTypeChain;
 import com.ratpack.xin.router.UserInfoRouter;
 import lombok.extern.log4j.Log4j2;
 import ratpack.guice.Guice;
@@ -49,6 +50,7 @@ public class MainServer {
             context.render("This is XinFuture project");
         }).prefix("userInfo",UserInfoRouter.class)
           .prefix("article",ArticleRouter.class)
+          .prefix("type",ArticleTypeChain.class)
           .files();
     }
 }

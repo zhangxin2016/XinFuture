@@ -5,6 +5,7 @@ package com.ratpack.xin.db;
 
 
 import com.ratpack.xin.db.tables.Article;
+import com.ratpack.xin.db.tables.Articletype;
 import com.ratpack.xin.db.tables.Userinfo;
 
 import javax.annotation.Generated;
@@ -27,6 +28,11 @@ public class Tables {
      * The table <code>ratpack.article</code>.
      */
     public static final Article ARTICLE = com.ratpack.xin.db.tables.Article.ARTICLE;
+
+    /**
+     * The table <code>ratpack.articletype</code>.
+     */
+    public static final Articletype ARTICLETYPE = com.ratpack.xin.db.tables.Articletype.ARTICLETYPE;
 
     /**
      * The table <code>ratpack.userinfo</code>.

@@ -6,10 +6,13 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Singleton;
 import com.google.inject.name.Names;
 import com.ratpack.xin.dao.IArticleDao;
+import com.ratpack.xin.dao.IArticleTypeDao;
 import com.ratpack.xin.dao.impl.ArticleDaoImpl;
+import com.ratpack.xin.dao.impl.ArticleTypeDaoImpl;
 import com.ratpack.xin.guice.provider.*;
 import com.ratpack.xin.handler.*;
 import com.ratpack.xin.router.ArticleRouter;
+import com.ratpack.xin.router.ArticleTypeChain;
 import com.ratpack.xin.router.UserInfoRouter;
 import org.jooq.DSLContext;
 import ratpack.handling.Handler;
@@ -27,6 +30,7 @@ public class FutureModule extends AbstractModule {
         //路由
         bind(UserInfoRouter.class).in(Singleton.class);
         bind(ArticleRouter.class).in(Singleton.class);
+        bind(ArticleTypeChain.class).in(Singleton.class);
         //handler -> userInfo
         bind(Handler.class).annotatedWith(Names.named("getUserHandler")).to(GetUserHandler.class).in(Singleton.class);
         bind(Handler.class).annotatedWith(Names.named("addUserInfoHandler")).to(AddUserInfoHandler.class).in(Singleton.class);
@@ -46,5 +50,6 @@ public class FutureModule extends AbstractModule {
 
         //DAO
         bind(IArticleDao.class).to(ArticleDaoImpl.class).in(Singleton.class);
+        bind(IArticleTypeDao.class).to(ArticleTypeDaoImpl.class).in(Singleton.class);
     }
 }

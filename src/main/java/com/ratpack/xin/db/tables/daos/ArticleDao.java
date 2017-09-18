@@ -30,14 +30,14 @@ import org.jooq.impl.DAOImpl;
 public class ArticleDao extends DAOImpl<ArticleRecord, com.ratpack.xin.db.tables.pojos.Article, Long> {
 
     /**
-     * Create a new IArticleDao without any configuration
+     * Create a new ArticleDao without any configuration
      */
     public ArticleDao() {
         super(Article.ARTICLE, com.ratpack.xin.db.tables.pojos.Article.class);
     }
 
     /**
-     * Create a new IArticleDao with an attached configuration
+     * Create a new ArticleDao with an attached configuration
      */
     public ArticleDao(Configuration configuration) {
         super(Article.ARTICLE, com.ratpack.xin.db.tables.pojos.Article.class, configuration);
