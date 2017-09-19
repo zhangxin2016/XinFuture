@@ -8,6 +8,8 @@ import lombok.extern.log4j.Log4j2;
 import ratpack.handling.Context;
 import ratpack.handling.Handler;
 
+import java.util.List;
+
 /**
  * Created by zhangx on 2017/9/15
  */
@@ -18,7 +20,7 @@ public class ArticleByUuidHandler implements Handler{
     @Override
     public void handle(Context ctx) throws Exception {
         String uuid = ctx.getRequest().getQueryParams().get("create_uuid");
-        Article article = iArticleDao.articleInfo(uuid);
+        List<Article> article = iArticleDao.articleInfo(uuid);
         log.debug("ArticleByUuidHandler article:{}",article);
         ctx.render(ResultVo.success(article));
     }

@@ -65,12 +65,12 @@ public class ArticleDaoImpl implements IArticleDao {
      * 文章详细信息
      */
     @Override
-    public Article articleInfo(String uuid) {
-        Article article = dslContext.selectFrom(ARTICLE).where(ARTICLE.CREATE_UUID.equal(uuid)).fetchOne().map(record -> {
-            Article article1 = record.into(Article.class);
-            return article1;
+    public List<Article> articleInfo(String uuid) {
+        List<Article> articleList = dslContext.selectFrom(ARTICLE).where(ARTICLE.CREATE_UUID.equal(uuid)).fetch().map(record -> {
+            Article article = record.into(Article.class);
+            return article;
         });
-        return article;
+        return articleList;
     }
     /*
      * 不同类型的文章个数
@@ -85,7 +85,7 @@ public class ArticleDaoImpl implements IArticleDao {
      */
     @Override
     public List<Article> listArticleByType(String typeUUID) {
-        List<Article> articleList = dslContext.selectFrom(ARTICLE).where(ARTICLE.BLOGTYPE.eq(typeUUID)).limit(1,2).fetch().map(record -> {
+        List<Article> articleList = dslContext.selectFrom(ARTICLE).where(ARTICLE.BLOGTYPE.eq(typeUUID)).fetch().map(record -> {
             Article article = record.into(Article.class);
             return article;
         });

@@ -41,6 +41,7 @@ public class ArticleTypeChain implements Action<Chain> {
             ArticleTypeCount articleTypeCount = new ArticleTypeCount();
             articleTypeCount.setTypeName(articleType.getTypeDesc());
             articleTypeCount.setCount(iArticleDao.countByType(articleType.getCreateUuid()));
+            articleTypeCount.setUuid(articleType.getCreateUuid());
             typeCountsList.add(articleTypeCount);
         });
         log.debug("listType articleTypeList:{}",articleTypeList);

@@ -6,4 +6,5 @@ import lombok.Data;
 public class ArticleTypeCount {
     private String typeName;
     private Integer count;
+    private String uuid;
 }
