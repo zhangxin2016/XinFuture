@@ -22,6 +22,9 @@ public class ArticleDaoImpl implements IArticleDao {
     public ArticleDaoImpl(DSLContext dslContext) {
         this.dslContext = dslContext;
     }
+    /*
+     * 新增文章
+     */
     @Override
     public Integer insertArticle(Article article) {
         int result = dslContext.insertInto(ARTICLE)
@@ -35,7 +38,9 @@ public class ArticleDaoImpl implements IArticleDao {
                 .execute();
         return result;
     }
-
+    /*
+     * 根据用户查找文章列表
+     */
     @Override
     public List<Article> listArticleByUser(String user) {
         List<Article> articleList = dslContext.selectFrom(ARTICLE).where(ARTICLE.BLOGAUTHOR.eq(user)).fetch().map(record -> {
@@ -45,6 +50,9 @@ public class ArticleDaoImpl implements IArticleDao {
         return articleList;
     }
 
+    /*
+     * 所有文章列表
+     */
     @Override
     public List<Article> listArticleAll() {
         List<Article> articleList = dslContext.selectFrom(ARTICLE).fetch().map(record -> {
@@ -53,7 +61,9 @@ public class ArticleDaoImpl implements IArticleDao {
         });
         return articleList;
     }
-
+    /*
+     * 文章详细信息
+     */
     @Override
     public Article articleInfo(String uuid) {
         Article article = dslContext.selectFrom(ARTICLE).where(ARTICLE.CREATE_UUID.equal(uuid)).fetchOne().map(record -> {
@@ -62,10 +72,50 @@ public class ArticleDaoImpl implements IArticleDao {
         });
         return article;
     }
-
+    /*
+     * 不同类型的文章个数
+     */
     @Override
     public Integer countByType(String typeUUID) {
         Integer count = dslContext.fetchCount(dslContext.selectFrom(ARTICLE).where(ARTICLE.BLOGTYPE.eq(typeUUID)));
         return count;
+    }
+    /*
+     * 根据类型获取文章列表
+     */
+    @Override
+    public List<Article> listArticleByType(String typeUUID) {
+        List<Article> articleList = dslContext.selectFrom(ARTICLE).where(ARTICLE.BLOGTYPE.eq(typeUUID)).limit(1,2).fetch().map(record -> {
+            Article article = record.into(Article.class);
+            return article;
+        });
+        return articleList;
+    }
+    /*
+     * 每个用户不同类型的文章列表
+     */
+    @Override
+    public List<Article> listArticleByTypeUser(String typeUUID, String user) {
+        List<Article> articleList = dslContext.selectFrom(ARTICLE)
+                .where(ARTICLE.BLOGTYPE.eq(typeUUID))
+                .and(ARTICLE.BLOGAUTHOR.eq(user)).fetch()
+                .map(record -> {
+            Article article = record.into(Article.class);
+            return article;
+        });
+        return articleList;
+    }
+    /*
+     * 文章数量
+     */
+    @Override
+    public Integer articleCount() {
+        Integer count = dslContext.fetchCount(dslContext.selectFrom(ARTICLE));
+        return count;
+    }
+
+    @Override
+    public List<Article> listArticleByUserPage(String user, int row, int rowNum) {
+        return null;
     }
 }

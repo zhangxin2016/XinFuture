@@ -3,6 +3,7 @@ package com.ratpack.xin.router;
 import com.google.inject.Inject;
 import com.ratpack.xin.dao.IArticleDao;
 import com.ratpack.xin.dao.IArticleTypeDao;
+import com.ratpack.xin.db.tables.pojos.Article;
 import com.ratpack.xin.db.tables.pojos.Articletype;
 import com.ratpack.xin.pojo.ArticleTypeCount;
 import com.ratpack.xin.vo.ResultVo;
@@ -24,6 +25,7 @@ public class ArticleTypeChain implements Action<Chain> {
     @Override
     public void execute(Chain chain) throws Exception {
         chain.get("list",this::listType);
+        chain.get("articleList",this::listArticleByType);
     }
 
     public void listType(Context context){
@@ -43,6 +45,18 @@ public class ArticleTypeChain implements Action<Chain> {
         });
         log.debug("listType articleTypeList:{}",articleTypeList);
         context.render(ResultVo.success(typeCountsList));
+    }
 
+    public void listArticleByType(Context context){
+        String user = context.getRequest().getQueryParams().get("user");
+        String typeUUID = context.getRequest().getQueryParams().get("typeUUID");
+        List<Article> articleList = new ArrayList<>();
+        if (user.equals("admin")){
+            articleList = iArticleDao.listArticleByType(typeUUID);
+        }else {
+            articleList = iArticleDao.listArticleByTypeUser(typeUUID,user);
+        }
+        log.debug("listArticleByType articleList:{}",articleList);
+        context.render(ResultVo.success(articleList));
     }
 }
