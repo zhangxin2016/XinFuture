@@ -36,7 +36,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Articletype extends TableImpl<ArticletypeRecord> {
 
-    private static final long serialVersionUID = -2110837736;
+    private static final long serialVersionUID = 390421608;
 
     /**
      * The reference instance of <code>ratpack.articletype</code>
@@ -64,7 +64,7 @@ public class Articletype extends TableImpl<ArticletypeRecord> {
     /**
      * The column <code>ratpack.articletype.create_uuid</code>.
      */
-    public final TableField<ArticletypeRecord, String> CREATE_UUID = createField("create_uuid", org.jooq.impl.SQLDataType.VARCHAR.length(50), this, "");
+    public final TableField<ArticletypeRecord, String> CREATE_UUID = createField("create_uuid", org.jooq.impl.SQLDataType.VARCHAR.length(100), this, "");
 
     /**
      * The column <code>ratpack.articletype.type_desc</code>.

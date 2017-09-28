@@ -9,10 +9,12 @@ buildscript {
         }
     }
     dependencies {
+        classpath "io.ratpack:ratpack-gradle:1.4.1"
         classpath 'com.netflix.nebula:gradle-extra-configurations-plugin:3.0.3'
         classpath 'org.jooq:jooq-codegen:3.9.5'
         classpath 'mysql:mysql-connector-java:5.1.38'
         classpath 'nu.studer:gradle-jooq-plugin:2.0.7'
+        classpath "com.github.jengelman.gradle.plugins:shadow:1.2.3"
     }
 }
 apply plugin: 'java'
@@ -20,13 +22,21 @@ apply plugin: "idea"
 apply plugin: 'war'
 apply plugin: 'nebula.provided-base'
 apply plugin: 'nu.studer.jooq'
+apply plugin: 'application'
+apply plugin: 'com.github.johnrengelman.shadow'
 
 sourceCompatibility = 1.8
 [compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
 repositories {
     mavenCentral()
 }
-
+//全局排除依赖
+configurations{
+    all*.exclude group:"log4j"
+    all*.exclude group:"commons-logging"
+    all*.exclude group:'org.slf4j',module:'slf4j-log4j12'
+}
+mainClassName = "com.ratpack.xin.main.MainServer"
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
     //日志相关

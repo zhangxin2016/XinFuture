@@ -36,7 +36,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Article extends TableImpl<ArticleRecord> {
 
-    private static final long serialVersionUID = -282956160;
+    private static final long serialVersionUID = -99527301;
 
     /**
      * The reference instance of <code>ratpack.article</code>
@@ -74,7 +74,7 @@ public class Article extends TableImpl<ArticleRecord> {
     /**
      * The column <code>ratpack.article.blogtype</code>. 类型
      */
-    public final TableField<ArticleRecord, String> BLOGTYPE = createField("blogtype", org.jooq.impl.SQLDataType.VARCHAR.length(50), this, "类型");
+    public final TableField<ArticleRecord, String> BLOGTYPE = createField("blogtype", org.jooq.impl.SQLDataType.VARCHAR.length(22), this, "类型");
 
     /**
      * The column <code>ratpack.article.blogtitie</code>. 文章标题

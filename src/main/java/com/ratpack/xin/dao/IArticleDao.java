@@ -23,4 +23,5 @@ public interface IArticleDao {
     List<Article> listArticleByTypeUser(String typeUUID,String user);
     Integer articleCount();
     List<Article> listArticleByUserPage(String user,int row,int rowNum);
+    List<Article> searchArticleList(String name);
 }

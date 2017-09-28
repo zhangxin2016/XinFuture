@@ -118,4 +118,15 @@ public class ArticleDaoImpl implements IArticleDao {
     public List<Article> listArticleByUserPage(String user, int row, int rowNum) {
         return null;
     }
+
+    @Override
+    public List<Article> searchArticleList(String name) {
+        List<Article> articleList = dslContext.selectFrom(ARTICLE)
+                .where(ARTICLE.BLOGTITIE.like("%"+name+"%")).fetch()
+                .map(record -> {
+                    Article article = record.into(Article.class);
+                    return article;
+                });
+        return articleList;
+    }
 }

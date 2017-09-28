@@ -36,6 +36,7 @@ public class ArticleRouter implements Action<Chain> {
         chain.get("list",articleListHandler);
         chain.get("get",articleByUuidHandler);
         chain.get("listByType",this::articleListByType);
+        chain.get("listBySearch",this::searchArticleList);
 
     }
     public void articleListByType(Context context){
@@ -48,6 +49,13 @@ public class ArticleRouter implements Action<Chain> {
             articleList = iArticleDao.listArticleByTypeUser(uuid,user);
         }
         log.debug("articleListByType articleList:{}",articleList);
+        context.render(ResultVo.success(articleList));
+    }
+
+    public void searchArticleList(Context context){
+        String articleName = context.getRequest().getQueryParams().get("articleName");
+        List<Article> articleList = articleList = iArticleDao.searchArticleList(articleName);
+        log.debug("searchArticleList articleList:{}",articleList);
         context.render(ResultVo.success(articleList));
     }
 }
