@@ -43,7 +43,7 @@ public class ArticleRouter implements Action<Chain> {
         String user = context.getRequest().getQueryParams().get("username");
         String uuid = context.getRequest().getQueryParams().get("typeuuid");
         List<Article> articleList = new ArrayList<>();
-        if (user.equals("admin")){
+        if ("admin".equals(user)){
             articleList = iArticleDao.listArticleByType(uuid);
         }else {
             articleList = iArticleDao.listArticleByTypeUser(uuid,user);

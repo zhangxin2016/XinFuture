@@ -20,7 +20,7 @@ public class ArticleDaoImpl implements IArticleDao {
     private static DSLContext dslContext;
     @Inject
     public ArticleDaoImpl(DSLContext dslContext) {
-        this.dslContext = dslContext;
+        ArticleDaoImpl.dslContext = dslContext;
     }
     /*
      * 新增文章

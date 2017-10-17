@@ -10,9 +10,9 @@ import java.util.Date;
  */
 @Log4j2
 public class TimeTool {
-    private static SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     public static String formatTimestamp(Long timestamp){
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         try{
             Date date = new Date();
             date.setTime(timestamp);

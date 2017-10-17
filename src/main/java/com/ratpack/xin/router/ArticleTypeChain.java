@@ -32,7 +32,7 @@ public class ArticleTypeChain implements Action<Chain> {
         String user = context.getRequest().getQueryParams().get("user");
         List<Articletype> articleTypeList = new ArrayList<>();
         List<ArticleTypeCount> typeCountsList = new ArrayList<>();
-        if (user.equals("admin")){
+        if ("admin".equals(user)){
             articleTypeList = iArticleTypeDao.listArticleType();
         }else {
             articleTypeList = iArticleTypeDao.listArticleTypeByUser(user);
@@ -52,7 +52,7 @@ public class ArticleTypeChain implements Action<Chain> {
         String user = context.getRequest().getQueryParams().get("user");
         String typeUUID = context.getRequest().getQueryParams().get("typeUUID");
         List<Article> articleList = new ArrayList<>();
-        if (user.equals("admin")){
+        if ("admin".equals(user)){
             articleList = iArticleDao.listArticleByType(typeUUID);
         }else {
             articleList = iArticleDao.listArticleByTypeUser(typeUUID,user);

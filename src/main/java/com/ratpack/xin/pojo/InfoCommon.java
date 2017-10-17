@@ -1223,7 +1223,9 @@ public final class InfoCommon {
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
+      if (isInitialized == 1) {
+        return true;
+      }
       if (isInitialized == 0) return false;
 
       if (!hasUserid()) {

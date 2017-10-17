@@ -15,7 +15,7 @@ public class ArticleTypeDaoImpl implements IArticleTypeDao{
     private static DSLContext dslContext;
     @Inject
     public ArticleTypeDaoImpl(DSLContext dslContext) {
-        this.dslContext = dslContext;
+        ArticleTypeDaoImpl.dslContext = dslContext;
     }
     @Override
     public List<Articletype> listArticleTypeByUser(String user) {

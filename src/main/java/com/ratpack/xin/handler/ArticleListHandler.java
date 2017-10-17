@@ -27,7 +27,7 @@ public class ArticleListHandler implements Handler{
     public void handle(Context ctx) throws Exception {
         String user = ctx.getRequest().getQueryParams().get("username");
         List<Article> articleList = new ArrayList<>();
-        if (user.equals("admin")){
+        if ("admin".equals(user)){
             articleList = iArticleDao.listArticleAll();
         }else {
             articleList = iArticleDao.listArticleByUser(user);
